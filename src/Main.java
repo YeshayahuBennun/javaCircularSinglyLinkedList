@@ -4,6 +4,8 @@ public class Main {
 
         cSLL.createCSLL(5);
         cSLL.insertCSLL(4, 0);
+        cSLL.insertCSLL(6, 0);
         System.out.println(cSLL.getHead().getValue());
+        cSLL.traversalCSLL();
     }
 }
