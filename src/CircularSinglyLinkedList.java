@@ -71,17 +71,33 @@ public class CircularSinglyLinkedList {
 
     //Traversal Circular Single Linked List
     public void traversalCSLL() {
-        if (head != null) {
-            Node temNode = head;
-            for (int i = 0; i < size; i++) {
-                System.out.print(temNode.getValue());
-                if (i != size - 1) {
-                    System.out.print(" -> ");
+        if (head != null) {//----------------------------------------------------------O(1)
+            Node temNode = head;//-----------------------------------------------------O(1)
+            for (int i = 0; i < size; i++) {//-----------------------------------------O(N)
+                System.out.print(temNode.getValue());//--------------------------------O(1)
+                if (i != size - 1) {//-------------------------------------------------O(1)
+                    System.out.print(" -> ");//----------------------------------------O(1)
                 }
-                temNode = temNode.getNext();
+                temNode = temNode.getNext();//-----------------------------------------O(1)
             }
-        }else {
-            System.out.println("CSLL does not exist");
+        } else {
+            System.out.println("CSLL does not exist");//-------------------------------O(1)
         }
+    }
+
+    //Search Circular Single Linked List
+    public boolean searchCSLL(int nodeValue) {
+        if(head!=null){//--------------------------------------------------------------O(1)
+            Node tempNode = head;//----------------------------------------------------O(1)
+            for (int i = 0; i < size; i++) {//-----------------------------------------O(N)
+                if(tempNode.getValue()==nodeValue){//----------------------------------O(1)
+                    System.out.println("Found node at location: "+i);//----------------O(1)
+                    return true;//-----------------------------------------------------O(1)
+                }
+                tempNode = tempNode.getNext();//---------------------------------------O(1)
+            }
+        }
+        System.out.println("Node not found!");//---------------------------------------O(1)
+        return false;//----------------------------------------------------------------O(1)
     }
 }
