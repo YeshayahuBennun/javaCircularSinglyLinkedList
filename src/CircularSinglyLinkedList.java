@@ -118,9 +118,9 @@ public class CircularSinglyLinkedList {
                 head.setNext(null);//--------------------------------------------------O(1)
                 head = null;//---------------------------------------------------------O(1)
             }
-        } else if (location >= size) {//Deleting the last node//-----------------------O(1)
+        } else if (location >= size-1) {//Deleting the last node//-----------------------O(1)
             Node tempNode = head;//----------------------------------------------------O(1)
-            for (int i =0; i<size-1; i++) {//------------------------------------------O(1)
+            for (int i =0; i<size-2; i++) {//------------------------------------------O(1)
                 tempNode = tempNode.getNext();//---------------------------------------O(1)
             }
             //Only one node
@@ -142,5 +142,31 @@ public class CircularSinglyLinkedList {
             tempNode.setNext(tempNode.getNext().getNext());//--------------------------O(1)
             size--;//------------------------------------------------------------------O(1)
         }
+    }
+    /*
+* suppose the linked list has 5 elements.
+then the value of size is 5
+*  so if we go to this condition else if (location >= size)  and put last element's index as location it'll be 4 >= 5
+*  which is false so I think that the last element's case will go under the else case (which is intermediate value
+*  case) and this tail won't be updated.
+*  also similarly within else if (location >= size) 's for loop case  i.e for (int i=0; i<size-1; i++) the loop
+*  termination condition should be size - 2
++  instead of size-1 as the tail still points to the previous last element which we just deleted.
+*  I don't know if it's much of a problem since the code is working but pointed out just in case.
+*  All you have to do is in the case of removing last element, instead of writing else case as (location <= size)
+*  write (location <=size-1)  and change the for loop upper bound (for the case of normal and circular singly
+* linked list) from size - 1 to size - 2 .*/
+
+
+  //Delete an Entire CSLL
+    public void deleteCSLL(){
+       if(head==null){//---------------------------------------------------------------O(1)
+           System.out.println("The CSLL does not exist!");//---------------------------O(1)
+       }else {
+           head=null;//----------------------------------------------------------------O(1)
+           tail.setNext(null);//-------------------------------------------------------O(1)
+           tail = null;//--------------------------------------------------------------O(1)
+           System.out.println("CSLL has been deleted");//------------------------------O(1)
+       }
     }
 }
